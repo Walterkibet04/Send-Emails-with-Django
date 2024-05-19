@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'Email',
     'content',
 ]
@@ -53,6 +55,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'SendEmail.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 
 TEMPLATES = [
     {
