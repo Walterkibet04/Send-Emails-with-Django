@@ -19,12 +19,20 @@ class BasicEmailView(FormView, ListView):
         my_subject = "Email from our django app"
         my_recipient = form.cleaned_data['email']
 
-        if User.objects.filter(email=my_recipient).exists()
-            user =
+        if User.objects.filter(email=my_recipient).exists():
+            user = User.objects.get(email=my_recipient)
+            welcome_message = "Welcome "+ str(user.first_name) + " " + str(user.last_name)
+        else:
+            welcome_message = "You have been invited to you our app"
+
+        link_app = "http://localhost:8000"
           
+        context = {
+            "welcome_message": welcome_message,
+            "link_app": link_app
+        }
 
-
-        html_message = render_to_string("content/email.html")
+        html_message = render_to_string("content/email.html", context=context)
         plain_message = strip_tags(html_message)
 
         message = EmailMultiAlternatives(
